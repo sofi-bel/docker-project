@@ -1,0 +1,27 @@
+version: "3"
+services:
+  app:
+    ports:
+      - "127.0.0.1:5000:5000"
+      - "127.0.0.1:5022:22"
+    build:
+      context: ./app
+      dockerfile: Dockerfile_app
+    deploy:
+      resources:
+        limits:
+          memory: 1100M
+    networks:
+      default:
+        aliases:
+          - docker-projects-app-1
+  tester:
+    build:
+      context: ./test
+      dockerfile: Dockerfile_tester
+    depends_on:
+      - app
+    networks:
+      default:
+        aliases:
+          - docker-projects-tester-1

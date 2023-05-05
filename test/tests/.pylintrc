@@ -1,0 +1,14 @@
+[MAIN]
+ignore=tests
+jobs=4
+
+[MESSAGES CONTROL]
+disable=all
+enable=C0303, C0209, C0103, C0321, W0622, E0401, W0601, E1111, E1121, W0612
+
+[REPORTS]
+output-format=colorized
+reports=no
+evaluation= 10.0 -((float(5 * error + warning + refactor + convention) / statement) * 10)
+msg-template={C}: {line}: {msg} ({symbol})
+score=yes
